@@ -1,0 +1,138 @@
+/* 1. CONFIGURACIÓN DE VARIABLES (Paso 2) */
+:root {
+    --color-primario: #203B53;
+    --color-fondo: #f8fafc;
+    --color-blanco: #ffffff;
+    --color-borde: #ddd;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --espaciado: 1rem;
+}
+
+/* 2. ESTILOS GENERALES */
+body {
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-principal);
+    margin: 0;
+    color: #333;
+}
+
+header {
+    background-color: var(--color-primario);
+    color: white;
+    padding: var(--espaciado);
+    text-align: center;
+}
+
+/* 3. ESTRUCTURA PRINCIPAL (LAYOUT) */
+main {
+    display: flex; /* Alinea Aside y Section de forma horizontal */
+    min-height: 100vh;
+}
+
+aside {
+    width: 250px;
+    background-color: var(--color-blanco);
+    padding: var(--espaciado);
+    border-right: 1px solid var(--color-borde);
+}
+
+aside nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside nav ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+}
+
+/* 4. LISTA DE TAREAS Y TARJETAS (Paso 3) */
+.task-list {
+    flex-grow: 1; /* Ocupa todo el espacio restante */
+    padding: var(--espaciado);
+}
+
+.task-card {
+    display: flex;
+    justify-content: space-between; /* Título a la izquierda, Badge a la derecha */
+    align-items: center;
+    background-color: var(--color-blanco);
+    padding: var(--espaciado);
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    
+    /* Bonus: Transición suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.badge {
+    background-color: #fee2e2;
+    color: #ef4444;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+/* Estilos específicos para el Habit Tracker */
+.habit-content {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.habit-checkbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: var(--color-primario); /* El check será azul */
+}
+
+/* Colores personalizados para los Badges (Rachas) */
+.streak-hot {
+    background-color: #ffedd5;
+    color: #ea580c; /* Naranja fuego */
+}
+
+.streak-cool {
+    background-color: #e0f2fe;
+    color: #0369a1; /* Azul calma */
+}
+
+.streak-new {
+    background-color: #dcfce7;
+    color: #15803d; /* Verde éxito */
+}
+
+/* Tachado cuando el hábito está completado (simulación) */
+.habit-checkbox:checked + .task-info h3 {
+    text-decoration: line-through;
+    color: #94a3b8;
+}
+
+/* 5. DISEÑO RESPONSIVE (Paso 4) */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* Apila el menú arriba y las tareas abajo */
+    }
+
+    aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--color-borde);
+        box-sizing: border-box;
+    }
+
+    .task-card {
+        flex-direction: column; /* En móvil, el badge baja para dar más espacio */
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+}
