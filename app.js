@@ -19,7 +19,7 @@ function renderizar() {
     contenedor.innerHTML = "";
     tareas.forEach(tarea => {
         const article = document.createElement('article');
-        // Agregamos una clase 'task-card' para que el filtro pueda identificarla
+
         article.className = 'task-card flex justify-between items-center bg-white dark:bg-slate-800 p-5 mb-4 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-1';
         article.innerHTML = `
             <div class="flex items-center gap-4">
@@ -50,7 +50,7 @@ document.getElementById('toggle-tema').addEventListener('click', () => {
 });
 
 btnAgregar.addEventListener('click', agregarTarea);
-// Permitir añadir con Enter
+
 tareaInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') agregarTarea(); });
 
 renderizar();
